@@ -1,80 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import type {Node} from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
+import BottomTabs from './components/bottomTabs/bottom_tabs';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Login from './components/login/login';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+
+export default function App() {
+  const Tab = createStackNavigator();
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-        <Text style={{textAlign: 'center'}}>Welcome to LocoValue Project </Text>
-        
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{
+        headerTitleAlign: 'center',
+        headerShown: false,
+        animationEnabled: false,
+        headerStyle: {
+          backgroundColor: '#000',
+        },
+        headerTintColor: '#f4f4f4',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        }
+      }}>
+        <Tab.Screen name='Login' component={Login} options={{
+          tabBarIcon: ({ size, color }) => (<Icon name='home' color={color} size={size} />)
+        }} />
+        <Tab.Screen name='Tabs' component={BottomTabs} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
@@ -97,4 +56,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
