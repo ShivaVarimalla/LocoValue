@@ -1,6 +1,7 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import React from 'react';
 import {
   StyleSheet,
@@ -27,8 +28,12 @@ export default function BottomTabs() {
             fontWeight: 'bold'
           }
         }}>
-        <Tab.Screen name='Home' component={Home}/>
-        <Tab.Screen name='Home1' component={Home1}/>
+        <Tab.Screen name='Home' component={Home} options={{
+          tabBarIcon: ({ size, color }) => (<Icon name={'home'} solid color={'black'} size={size} />)
+        }}/>
+        <Tab.Screen name='Home1' component={Home1} options={{
+          tabBarIcon: ({ size, color }) => (<Icon name={'home'} solid color={'black'} size={size} />)
+        }}/>
         </Tab.Navigator>
   );
 };

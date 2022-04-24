@@ -2,7 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
 import {
   StyleSheet,
@@ -28,9 +28,7 @@ export default function App() {
           fontWeight: 'bold'
         }
       }}>
-        <Tab.Screen name='Login' component={Login} options={{
-          tabBarIcon: ({ size, color }) => (<Icon name='home' color={color} size={size} />)
-        }} />
+        <Tab.Screen name='Login' component={Login}  />
         <Tab.Screen name='Tabs' component={BottomTabs} />
       </Tab.Navigator>
     </NavigationContainer>
